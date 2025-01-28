@@ -1,0 +1,82 @@
+/* Reset.css - Reinicialização de Estilos */
+
+/* Remove margens, paddings e configurações padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define o tamanho da borda para herdar consistentemente */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Remove espaçamento padrão da tag <html> e define 100% de altura */
+html {
+    line-height: 1.15; /* Ajusta o espaçamento entre linhas */
+    -webkit-text-size-adjust: 100%; /* Remove ajustes automáticos do texto no Safari */
+    height: 100%;
+}
+
+/* Remove estilos padrão de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Remove formatações de cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* Remove sublinhados de links e mantém o estilo limpo */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remove bordas de botões e outros elementos interativos */
+button, input, textarea, select {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+/* Remove espaçamento e bordas de tabelas */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Normaliza imagens e vídeos para evitar comportamento inesperado */
+img, picture, video, canvas, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ajusta elementos HTML que podem ocupar 100% da altura */
+body, #root, #app {
+    height: 100%;
+}
+
+/* Remove estilos padrão de blockquotes e figuras */
+blockquote, figure {
+    margin: 0;
+}
+
+/* Define uma base consistente para forms */
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+/* Remove estilos automáticos de scroll em navegadores modernos */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

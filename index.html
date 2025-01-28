@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Placar</title>
+  </head>
+  <body>
+    <div id="rotate-message">
+      <video autoplay loop muted>
+        <source src="./imagens/Rotacao.mp4" type="video/mp4"/> 
+        Seu navegador nao suporta videos HTML5.
+      </video>
+    </div>
+    <div class="titulos__placar">
+      <h2 class="titulo__time esquerdo">Casa LE</h2>
+      <img
+        src="./imagens/bola-volei.png"
+        alt="incone bola de volei"
+        class="bola__volei"
+      />
+      <h2 class="titulo__time direito">Visitante LD</h2>
+    </div>
+
+    <div class="main">
+      <div class="botoes">
+        <img
+          src="./imagens/botao-mais-azul.svg"
+          alt="mais cor azul "
+          class="botoes__mais_e_menos mais_azul"
+        />
+        <img
+          src="./imagens/botao-menos-azul.svg"
+          alt=" menos cor azul"
+          class="botoes__mais_e_menos menos_azul"
+        />
+      </div>
+
+      <div class="placar time_azul">
+        <h2 class="numero_placar azul">12</h2>
+      </div>
+
+      <img
+        src="./imagens/reset.svg"
+        alt="resetar placar"
+        class="botao__resetar"
+      />
+
+      <div class="placar time_vermelho">
+        <h2 class="numero_placar vermelho">12</h2>
+      </div>
+
+      <div class="botoes">
+        <img
+          src="./imagens/botao-mais-vermelho.svg"
+          alt="mais cor vermelho"
+          class="botoes__mais_e_menos mais_vermelho"
+        />
+        <img
+          src="./imagens/botao-de-menos-vermelho.svg"
+          alt=" menos cor vermelho"
+          class="botoes__mais_e_menos menos_vermelho"
+        />
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
