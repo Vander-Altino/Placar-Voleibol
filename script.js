@@ -1,168 +1,131 @@
-let totalPontosAzulAtual = 0;
-let totalPontosVermelhoAtual = 0;
+// Constantes
+const PONTOS_PARA_VENCER = 12;
+const PONTOS_DIFERENCA_VITORIA = 2;
 
-const tituloLadoEsquedo = document.querySelector(".titulo__time.esquerdo");
+// Estado do placar
+let pontosAzul = 0;
+let pontosVermelho = 0;
+
+// Elementos do DOM
+const tituloEsquerdo = document.querySelector(".titulo__time.esquerdo");
+const tituloDireito = document.querySelector(".titulo__time.direito");
 const imagemBola = document.querySelector(".bola__volei");
-const tituloLadoDireito = document.querySelector(".titulo__time.direito");
 const placarAzul = document.querySelector(".placar.time_azul");
 const numeroPlacarAzul = document.querySelector(".numero_placar.azul");
 const placarVermelho = document.querySelector(".placar.time_vermelho");
 const numeroPlacarVermelho = document.querySelector(".numero_placar.vermelho");
-
-
-
-function RemoverClasseNaBolaVolei() {
-  // Remove todas as classes relacionadas ao estado da bola
-  tituloLadoEsquedo.classList.remove(
-    "esquerdo",
-    "bola_esquerdo",
-    "alinhar_esquerdo_para_direito"
-  );
-  imagemBola.classList.remove("bola__volei", "lado_esquerdo", "lado_direito");
-  tituloLadoDireito.classList.remove(
-    "direito",
-    "bola_direito",
-    "alinhar_direito_para_esquerdo"
-  );
-}
-
-function AdicionarClasseNaBolaVoleiAesquerda() {
-  RemoverClasseNaBolaVolei();
-
-  // Adiciona a classe 'bola_esquerdo' ao título do lado esquerdo
-  tituloLadoEsquedo.classList.add("bola_esquerdo");
-
-  // Adiciona as classes 'bola__volei' e 'lado_esquerdo' à imagem da bola
-  imagemBola.classList.add("bola__volei", "lado_esquerdo");
-
-  // Adiciona a classe 'alinhar_direito_para_esquerdo' ao título do lado direito
-  tituloLadoDireito.classList.add("alinhar_direito_para_esquerdo");
-}
-
-function AdicionarClasseNaBolaVoleiAdireita() {
-  RemoverClasseNaBolaVolei();
-
-  // Adiciona a classe 'bola_esquerdo' ao título do lado esquerdo
-  tituloLadoEsquedo.classList.add("alinhar_esquerdo_para_direito");
-
-  // Adiciona as classes 'bola__volei' e 'lado_esquerdo' à imagem da bola
-  imagemBola.classList.add("bola__volei", "lado_direito");
-
-  // Adiciona a classe 'alinhar_direito_para_esquerdo' ao título do lado direito
-  tituloLadoDireito.classList.add("bola_direito");
-}
-
-function resetarPlacar() {
-  totalPontosAzulAtual = 0;
-  document.querySelector(".azul").textContent = 0;
-  console.log(totalPontosAzulAtual);
-  totalPontosVermelhoAtual = 0;
-  document.querySelector(".vermelho").textContent = 0;
-  console.log(totalPontosVermelhoAtual);
-  AdicionarClasseNaBolaVoleiPadrao();
-}
-
-function AdicionarClasseNaBolaVoleiPadrao() {
-  RemoverClasseNaBolaVolei();
-  // Adiciona a classe 'bola_esquerdo' ao título do lado esquerdo
-  tituloLadoEsquedo.classList.add("esquerdo");
-
-  // Adiciona as classes 'bola__volei' e 'lado_esquerdo' à imagem da bola
-  imagemBola.classList.add("bola__volei");
-
-  // Adiciona a classe 'alinhar_direito_para_esquerdo' ao título do lado direito
-  tituloLadoDireito.classList.add("direito");
-
-  placarAzul.classList.remove("time_azul_branco"); // Adiciona a nova classe
-  numeroPlacarAzul.classList.remove("azul_branco"); // Adiciona a nova classe
-  tituloLadoEsquedo.classList.remove("esquerdo_branco");
-
-  placarVermelho.classList.remove("time_vermelho_branco"); // Adiciona a nova classe
-  numeroPlacarVermelho.classList.remove("vermelho_branco"); // Adiciona a nova classe
-  tituloLadoDireito.classList.remove("direito_branco");
-
-
-}
-
 const botoes = document.querySelectorAll(".botoes__mais_e_menos");
-document.querySelector(".azul").textContent = totalPontosAzulAtual;
-document.querySelector(".vermelho").textContent = totalPontosVermelhoAtual;
+const botaoReset = document.querySelector(".botao__resetar");
 
+// Função para remover classes da bola e títulos
+function resetarClassesBola() {
+  tituloEsquerdo.classList.remove("esquerdo", "bola_esquerdo", "alinhar_esquerdo_para_direito");
+  tituloDireito.classList.remove("direito", "bola_direito", "alinhar_direito_para_esquerdo");
+  imagemBola.classList.remove("bola__volei", "lado_esquerdo", "lado_direito");
+}
+
+// Função para centralizar a bola e resetar seu tamanho
+function centralizarBola() {
+  resetarClassesBola();
+  tituloEsquerdo.classList.add("esquerdo");
+  tituloDireito.classList.add("direito");
+  imagemBola.classList.add("bola__volei"); // Classe padrão para o tamanho normal da bola
+}
+
+// Função para mover a bola para o lado esquerdo
+function moverBolaParaEsquerda() {
+  resetarClassesBola();
+  tituloEsquerdo.classList.add("bola_esquerdo");
+  imagemBola.classList.add("bola__volei", "lado_esquerdo");
+  tituloDireito.classList.add("alinhar_direito_para_esquerdo");
+}
+
+// Função para mover a bola para o lado direito
+function moverBolaParaDireita() {
+  resetarClassesBola();
+  tituloEsquerdo.classList.add("alinhar_esquerdo_para_direito");
+  imagemBola.classList.add("bola__volei", "lado_direito");
+  tituloDireito.classList.add("bola_direito");
+}
+
+// Função para resetar o placar
+function resetarPlacar() {
+  pontosAzul = 0;
+  pontosVermelho = 0;
+  atualizarPlacar();
+  centralizarBola();
+  resetarCoresTimes();
+}
+
+// Função para atualizar o placar na tela
+function atualizarPlacar() {
+  numeroPlacarAzul.textContent = pontosAzul;
+  numeroPlacarVermelho.textContent = pontosVermelho;
+}
+
+// Função para resetar as cores dos times
+function resetarCoresTimes() {
+  placarAzul.classList.remove("time_azul_branco");
+  numeroPlacarAzul.classList.remove("azul_branco");
+  tituloEsquerdo.classList.remove("esquerdo_branco");
+  placarVermelho.classList.remove("time_vermelho_branco");
+  numeroPlacarVermelho.classList.remove("vermelho_branco");
+  tituloDireito.classList.remove("direito_branco");
+}
+
+// Função para verificar se um time está a 1 ponto de vencer
+function verificarProximidadeVitoria() {
+  if (pontosAzul === PONTOS_PARA_VENCER - 1 && pontosVermelho <= PONTOS_PARA_VENCER - 1) {
+    placarAzul.classList.add("time_azul_branco");
+    numeroPlacarAzul.classList.add("azul_branco");
+    tituloEsquerdo.classList.add("esquerdo_branco");
+  } else if (pontosVermelho === PONTOS_PARA_VENCER - 1 && pontosAzul <= PONTOS_PARA_VENCER - 1) {
+    placarVermelho.classList.add("time_vermelho_branco");
+    numeroPlacarVermelho.classList.add("vermelho_branco");
+    tituloDireito.classList.add("direito_branco");
+  }
+}
+
+// Função para verificar se a partida terminou
+function verificarFimDaPartida() {
+  if (pontosAzul >= PONTOS_PARA_VENCER && pontosAzul - pontosVermelho >= PONTOS_DIFERENCA_VITORIA) {
+    alert("Time Azul venceu!");
+  } else if (pontosVermelho >= PONTOS_PARA_VENCER && pontosVermelho - pontosAzul >= PONTOS_DIFERENCA_VITORIA) {
+    alert("Time Vermelho venceu!");
+  } else if (pontosAzul === PONTOS_PARA_VENCER -1 && pontosVermelho === PONTOS_PARA_VENCER - 1) {
+    alert("Empate! Melhor de 3 pontos!");
+    resetarPlacar();
+  }
+}
+
+// Event listeners para os botões
 botoes.forEach((botao) => {
   botao.addEventListener("click", () => {
     if (botao.classList.contains("mais_azul")) {
-      totalPontosAzulAtual += 1;
-      document.querySelector(".azul").textContent = totalPontosAzulAtual;
-      RemoverClasseNaBolaVolei();
-      AdicionarClasseNaBolaVoleiAesquerda();
-    } else if (
-      botao.classList.contains("menos_azul") &&
-      totalPontosAzulAtual > 0
-    ) {
-      totalPontosAzulAtual -= 1;
-      document.querySelector(".azul").textContent = totalPontosAzulAtual;
-      RemoverClasseNaBolaVolei();
-      AdicionarClasseNaBolaVoleiAdireita();
-    } else if (
-      botao.classList.contains("menos_azul") &&
-      totalPontosAzulAtual === 0
-    ) {
-      alert("Placar nao aceitar menos que 0 ");
+      pontosAzul += 1;
+      moverBolaParaEsquerda();
+    } else if (botao.classList.contains("menos_azul") && pontosAzul > 0) {
+      pontosAzul -= 1;
+      moverBolaParaDireita();
     } else if (botao.classList.contains("mais_vermelho")) {
-      totalPontosVermelhoAtual += 1;
-      document.querySelector(".vermelho").textContent =
-        totalPontosVermelhoAtual;
-      RemoverClasseNaBolaVolei();
-      AdicionarClasseNaBolaVoleiAdireita();
-    } else if (
-      botao.classList.contains("menos_vermelho") &&
-      totalPontosVermelhoAtual > 0
-    ) {
-      totalPontosVermelhoAtual -= 1;
-      document.querySelector(".vermelho").textContent =
-        totalPontosVermelhoAtual;
-      RemoverClasseNaBolaVolei();
-      AdicionarClasseNaBolaVoleiAesquerda();
-    } else alert("Placar nao aceitar menos que 0 ");
-    {
+      pontosVermelho += 1;
+      moverBolaParaDireita();
+    } else if (botao.classList.contains("menos_vermelho") && pontosVermelho > 0) {
+      pontosVermelho -= 1;
+      moverBolaParaEsquerda();
+    } else {
+      alert("Placar não pode ser menor que 0!");
     }
 
-    if (totalPontosAzulAtual == 11 && totalPontosVermelhoAtual == 11) {
-      alert("ZEROU MELHOR DE 3 PONTOS !");
-      resetarPlacar();
-    } else if (
-      (totalPontosAzulAtual >= 12 && totalPontosVermelhoAtual <= 10) ||
-      (totalPontosVermelhoAtual >= 12 && totalPontosAzulAtual <= 10)
-    ) {
-      alert("A partida Terminou");
-    }
-    verificarBolaBrancaTimeVermelho();
-    verificarBolaBrancaTimeAzul();
-
-   
+    atualizarPlacar();
+    verificarProximidadeVitoria();
+    verificarFimDaPartida();
   });
-
-
 });
 
-const reset = document.querySelector(".botao__resetar");
-reset.addEventListener("click", () => {
-  resetarPlacar();
-});
+// Event listener para o botão de reset
+botaoReset.addEventListener("click", resetarPlacar);
 
-
-function verificarBolaBrancaTimeAzul(){
-  if (totalPontosAzulAtual == 11 && totalPontosVermelhoAtual <= 10) {
-    placarAzul.classList.add("time_azul_branco"); // Adiciona a nova classe
-    numeroPlacarAzul.classList.add("azul_branco"); // Adiciona a nova classe
-    tituloLadoEsquedo.classList.add("esquerdo_branco"); // Adiciona a nova classe
-  }
-}
-
-function verificarBolaBrancaTimeVermelho(){
-  if (totalPontosVermelhoAtual == 11 && totalPontosAzulAtual <= 10) {
-    placarVermelho.classList.add("time_vermelho_branco"); // Adiciona a nova classe
-    numeroPlacarVermelho.classList.add("vermelho_branco"); // Adiciona a nova classe
-    tituloLadoDireito.classList.add("direito_branco"); // Adiciona a nova classe
-  }
-}
+// Inicialização do placar
+atualizarPlacar();
+centralizarBola();
