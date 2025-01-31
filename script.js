@@ -1,5 +1,5 @@
 // Constantes
-const PONTOS_PARA_VENCER = 12;
+const PONTOS_PARA_VENCER = Number(prompt("A partida sera de quantos Pontos?"));
 const PONTOS_DIFERENCA_VITORIA = 2;
 
 // Estado do placar
