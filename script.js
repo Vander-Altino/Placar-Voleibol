@@ -89,11 +89,11 @@ function verificarProximidadeVitoria() {
 // Função para verificar se a partida terminou
 function verificarFimDaPartida() {
   if (pontosAzul >= PONTOS_PARA_VENCER && pontosAzul - pontosVermelho >= PONTOS_DIFERENCA_VITORIA) {
-    alert("Time Azul venceu!");
+    showModal("Partida terminou! Time Azul ganhou!");
   } else if (pontosVermelho >= PONTOS_PARA_VENCER && pontosVermelho - pontosAzul >= PONTOS_DIFERENCA_VITORIA) {
-    alert("Time Vermelho venceu!");
+    showModal("Partida terminou! Time Vermelho ganhou!");
   } else if (pontosAzul === PONTOS_PARA_VENCER -1 && pontosVermelho === PONTOS_PARA_VENCER - 1) {
-    alert("Empate! Melhor de 3 pontos!");
+    showModal("Empate! Melhor de 3 Pontos");
     resetarPlacar();
   }
 }

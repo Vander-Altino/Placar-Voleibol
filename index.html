@@ -77,6 +77,31 @@
       <button id="fullscreen__button">Entrar em Fullscreen</button>
     </div>
 
+    <!-- Modal Personalizado -->
+    <div
+      id="custom-modal"
+      style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1000;
+        display: none;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 1.2em;
+      "
+    >
+      <p id="modal-message"></p>
+      <!-- Mensagem dinâmica -->
+      <button onclick="hideModal()">Fechar</button>
+      <!-- Botão para fechar -->
+    </div>
+
     <script src="script.js"></script>
     <script src="fullscreen.js"></script>
   </body>
