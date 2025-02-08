@@ -20,16 +20,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10000;  /* Certifique-se de que o vídeo fica acima de outros elementos */
+  z-index: 10000; /* Certifique-se de que o vídeo fica acima de outros elementos */
 }
-
 
 #rotate-message video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 
 .titulos__placar {
   display: flex;
@@ -189,6 +187,21 @@ body {
   background-color: var(--cor-visitante);
 }
 
+#custom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+  display: none;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+}
 
 /* Layout normal no modo paisagem */
 @media (orientation: landscape) {
@@ -197,13 +210,8 @@ body {
   }
 }
 
-
 @media (orientation: portrait) {
   #rotate-message {
     display: flex; /* Exibe a mensagem no modo retrato */
   }
 }
-
-
-
-

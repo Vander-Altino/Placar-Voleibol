@@ -15,87 +15,74 @@
     <title>Placar</title>
   </head>
   <body>
-    <div id="rotate-message">
-      <video autoplay loop muted>
-        <source src="./imagens/Rotacao.mp4" type="video/mp4" />
-        Seu navegador nao suporta videos HTML5.
-      </video>
-    </div>
-    <div class="titulos__placar">
-      <h2 class="titulo__time esquerdo">Casa LE</h2>
-      <img
-        src="./imagens/bola-volei.png"
-        alt="incone bola de volei"
-        class="bola__volei"
-      />
-      <h2 class="titulo__time direito">Visitante LD</h2>
-    </div>
-
-    <div class="main">
-      <div class="botoes">
-        <img
-          src="./imagens/botao-mais-azul.svg"
-          alt="mais cor azul "
-          class="botoes__mais_e_menos mais_azul"
-        />
-        <img
-          src="./imagens/botao-menos-azul.svg"
-          alt=" menos cor azul"
-          class="botoes__mais_e_menos menos_azul"
-        />
+    <div id="container">
+      <!-- Conteúdo do placar -->
+      <div id="rotate-message">
+        <video autoplay loop muted>
+          <source src="./imagens/Rotacao.mp4" type="video/mp4" />
+          Seu navegador nao suporta videos HTML5.
+        </video>
       </div>
 
-      <div class="placar time_azul">
-        <h2 class="numero_placar azul">12</h2>
-      </div>
-
-      <img
-        src="./imagens/reset.svg"
-        alt="resetar placar"
-        class="botao__resetar"
-      />
-
-      <div class="placar time_vermelho">
-        <h2 class="numero_placar vermelho">12</h2>
-      </div>
-
-      <div class="botoes">
+      <div class="titulos__placar">
+        <h2 class="titulo__time esquerdo">Casa</h2>
         <img
-          src="./imagens/botao-mais-vermelho.svg"
-          alt="mais cor vermelho"
-          class="botoes__mais_e_menos mais_vermelho"
+          src="./imagens/bola-volei.png"
+          alt="incone bola de volei"
+          class="bola__volei"
         />
-        <img
-          src="./imagens/botao-de-menos-vermelho.svg"
-          alt=" menos cor vermelho"
-          class="botoes__mais_e_menos menos_vermelho"
-        />
+        <h2 class="titulo__time direito">Visitante</h2>
       </div>
-    </div>
 
-    <div id="fullscreen-button" class="fullscreen__container">
-      <button id="fullscreen__button">Entrar em Fullscreen</button>
+      <div class="main">
+        <div class="botoes">
+          <img
+            src="./imagens/botao-mais-azul.svg"
+            alt="mais cor azul "
+            class="botoes__mais_e_menos mais_azul"
+          />
+          <img
+            src="./imagens/botao-menos-azul.svg"
+            alt=" menos cor azul"
+            class="botoes__mais_e_menos menos_azul"
+          />
+        </div>
+
+        <div class="placar time_azul">
+          <h2 class="numero_placar azul">12</h2>
+        </div>
+
+        <img
+          src="./imagens/reset.svg"
+          alt="resetar placar"
+          class="botao__resetar"
+        />
+
+        <div class="placar time_vermelho">
+          <h2 class="numero_placar vermelho">12</h2>
+        </div>
+
+        <div class="botoes">
+          <img
+            src="./imagens/botao-mais-vermelho.svg"
+            alt="mais cor vermelho"
+            class="botoes__mais_e_menos mais_vermelho"
+          />
+          <img
+            src="./imagens/botao-de-menos-vermelho.svg"
+            alt=" menos cor vermelho"
+            class="botoes__mais_e_menos menos_vermelho"
+          />
+        </div>
+      </div>
+
+      <div id="fullscreen-button" class="fullscreen__container">
+        <button id="fullscreen__button">Entrar em Fullscreen</button>
+      </div>
     </div>
 
     <!-- Modal Personalizado -->
-    <div
-      id="custom-modal"
-      style="
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.9);
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        z-index: 1000;
-        display: none;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        font-size: 1.2em;
-      "
-    >
+    <div id="custom-modal">
       <p id="modal-message"></p>
       <!-- Mensagem dinâmica -->
       <button onclick="hideModal()">Fechar</button>
