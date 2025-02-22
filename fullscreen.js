@@ -31,6 +31,9 @@ function showModal(message) {
   const modalMessage = document.getElementById("modal-message");
   modalMessage.textContent = message; // Define a mensagem
   modal.style.display = "block"; // Mostra o modal
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 2400);
 }
 
 // Função para esconder o modal
